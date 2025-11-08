@@ -1,0 +1,14 @@
+matplotlib.animation.FuncAnimation
+
+"""
+fig: the figure object to get needed events
+func: The function to call at each frame
+frames: sumber data 
+"""
+
+
+plt.plot() tinggal pake
+
+fig,ax = plt.subplots() punya kanvas sendiri dan pena sendiri
+fig -> kanvas utama
+axes -> are plot tempat sumbu x,y,data akan di gambar
