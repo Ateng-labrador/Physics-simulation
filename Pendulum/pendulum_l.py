@@ -17,10 +17,12 @@ theta = [np.radians(90)]
 theta_velocity = 0
 time_step = 20/300
 
+
 time_stap = np.linspace(0,20,300)
 for t in time_stap:
     theta_new, theta_velocity = full_pendulum(g,l,theta[-1],theta_velocity,time_step)
     theta.append(theta_new)
+
 
 x = l*np.sin(theta)
 y = -l*np.cos(theta)
@@ -52,3 +54,4 @@ animation = FuncAnimation(
 
 
 plt.show()
+
