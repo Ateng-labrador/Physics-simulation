@@ -11,7 +11,7 @@ fig,axis = plt.subplots()
 axis.set_xlim([min(t),max(t)])
 axis.set_ylim([-2,2])
 animated_plot, = axis.plot([],[])
-print(animated_plot)
+
 
 def update_data(frame):
     
