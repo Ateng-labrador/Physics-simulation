@@ -32,7 +32,7 @@ x,y = koch_snowflake(3)
 
 fig,axis = plt.subplots()
 
-margin = 0.2
+margin = 1
 axis.set_xlim([min(x) - margin,max(x) + margin])
 axis.set_ylim([min(y) - margin,max(y) + margin])
 axis.grid()
