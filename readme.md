@@ -1,5 +1,4 @@
-<p align="center>
-    <img width="20%" src=".github/banner.png"><br/><br/>
+![banner](.github/banner.png)
 
 # 🎉🎉 Python Physics Simulation 🎉🎉
 
