@@ -1,4 +1,4 @@
-![banner](.github/banner.png)
+![banner](.github/bannerr.png)
 
 # 🎉🎉 Python Physics Simulation 🎉🎉
 
