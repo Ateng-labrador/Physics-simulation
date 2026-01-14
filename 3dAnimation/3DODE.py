@@ -55,6 +55,7 @@ colors_line = cmap_line(np.linspace(0,1,len(xs)-1))
 segments = np.array([ [[xs[i], ys[i], zs[i]], [xs[i+1], ys[i+1], zs[i+1]]] for i in range(len(xs)-1)])
 
 
+
 fig = plt.figure(figsize=(10,8))
 ax = fig.add_subplot(111, projection='3d')
 
@@ -110,3 +111,6 @@ def update(frame):
 anim = FuncAnimation(fig, update, frames=frames, interval=20, blit=False)
 
 plt.show()
+
+if __name__ == "__main__":
+    pass
