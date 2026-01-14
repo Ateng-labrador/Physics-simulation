@@ -1,4 +1,3 @@
-
 # animation = FuncAnimation(
 #     fig=fig,
 #     func=animate,

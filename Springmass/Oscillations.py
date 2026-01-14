@@ -12,7 +12,7 @@ y0 = -0.5
 
 
 def y(t):
-    return y0 + A*np.exp(-gamma*t) * np.cos(omega*t)
+    return y0 + A * np.exp(-gamma * t) * np.cos(omega * t)
 
 
 t_vals = np.linspace(0, 20, 1000)
@@ -23,13 +23,13 @@ ax.set_xlabel("x")
 ax.set_ylabel("y")
 
 
-ball, = ax.plot([], [], 'o', color='red', markersize=25)
+(ball,) = ax.plot([], [], "o", color="red", markersize=25)
 
 
-spring, = ax.plot([], [], color='black')
+(spring,) = ax.plot([], [], color="black")
 
 
-wave_line, = ax.plot([], [], color='blue', linewidth=2)
+(wave_line,) = ax.plot([], [], color="blue", linewidth=2)
 
 # List gelombang
 x_wave = []
@@ -37,7 +37,7 @@ y_wave = []
 
 
 anchor_x, anchor_y = 0, 1
-ax.plot(anchor_x, anchor_y, 'ks', markersize=10)
+ax.plot(anchor_x, anchor_y, "ks", markersize=10)
 
 scroll_speed = 0.05
 center_x = 0
@@ -50,7 +50,7 @@ def update(t):
     ball.set_data([0], [ypos])
 
     spring_y = np.linspace(anchor_y, ypos, 60)
-    spring_x = 0.15 * np.sin(12 * np.linspace(0, np.pi*4, 60))
+    spring_x = 0.15 * np.sin(12 * np.linspace(0, np.pi * 4, 60))
     spring.set_data(spring_x, spring_y)
 
     x_wave.append(center_x)
@@ -67,9 +67,6 @@ def update(t):
     return ball, spring, wave_line
 
 
-ani = FuncAnimation(fig,
-                    update,
-                    frames=t_vals,
-                    interval=30)
+ani = FuncAnimation(fig, update, frames=t_vals, interval=30)
 
 plt.show()

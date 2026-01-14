@@ -31,29 +31,22 @@ ax.set_title("Animasi Gerak Parabola")
 ax.grid(True)
 
 
-ax.plot(x, y, linestyle='--', color='purple')
+ax.plot(x, y, linestyle="--", color="purple")
 
 
-point, = ax.plot([], [], 'o', markersize=10, color='red')
+(point,) = ax.plot([], [], "o", markersize=10, color="red")
 
 
 def init():
     point.set_data([], [])
-    return point,
+    return (point,)
 
 
 def update(frame):
     point.set_data([x[frame]], [y[frame]])
-    return point,
+    return (point,)
 
 
-ani = FuncAnimation(
-    fig,
-    update,
-    frames=len(t),
-    init_func=init,
-    blit=True,
-    interval=40
-)
+ani = FuncAnimation(fig, update, frames=len(t), init_func=init, blit=True, interval=40)
 
 plt.show()

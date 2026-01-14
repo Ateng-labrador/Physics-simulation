@@ -15,13 +15,15 @@ x2 = A * np.exp(-b2 * t) * np.cos(w * t)
 fig, ax = plt.subplots()
 
 scat1 = ax.scatter(t[0], x1[0], c="b", s=15, label=f"b={b1}")
-line2, = ax.plot(t[0], x2[0], c="r", label=f"b={b2}")
+(line2,) = ax.plot(t[0], x2[0], c="r", label=f"b={b2}")
 
-ax.set(xlim=[0,10],
-       ylim=[-1.2,1.2],
-       xlabel="t (s)",
-       ylabel="x(t)",
-       title="Perbandingan Osilasi Teredam")
+ax.set(
+    xlim=[0, 10],
+    ylim=[-1.2, 1.2],
+    xlabel="t (s)",
+    ylabel="x(t)",
+    title="Perbandingan Osilasi Teredam",
+)
 ax.legend()
 
 
@@ -37,11 +39,8 @@ def update(frame):
 
     return scat1, line2
 
-ani = animation.FuncAnimation(fig,
-                              update,
-                              frames=len(t),
-                              interval=30,
-                              blit=True)
+
+ani = animation.FuncAnimation(fig, update, frames=len(t), interval=30, blit=True)
 
 
 plt.tight_layout()

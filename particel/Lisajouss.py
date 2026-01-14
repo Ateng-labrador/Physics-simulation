@@ -9,7 +9,7 @@ A = 1.5
 B = 1.0
 wx = 3
 wy = 2
-delta = np.pi/3
+delta = np.pi / 3
 
 t = np.linspace(0, 10, 1000)
 
@@ -26,8 +26,8 @@ ax.set_title("Animasi Kurva Lissajous (Superposisi Gerak Harmonik 2D)")
 ax.set_xlabel("x(t)")
 ax.set_ylabel("y(t)")
 
-point, = ax.plot([], [], 'ro', ms=8)
-trail, = ax.plot([], [], '-', lw=1)
+(point,) = ax.plot([], [], "ro", ms=8)
+(trail,) = ax.plot([], [], "-", lw=1)
 
 
 def update(frame):
@@ -36,8 +36,5 @@ def update(frame):
     return point, trail
 
 
-ani = animation.FuncAnimation(fig,
-                              update,
-                              frames=len(t),
-                              interval=10)
+ani = animation.FuncAnimation(fig, update, frames=len(t), interval=10)
 plt.show()

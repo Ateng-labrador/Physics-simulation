@@ -6,10 +6,15 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def parameter(mA: float = 6.0, mB: float = 2.0,
-              g: float = 9.8, px: float = 0.0,
-              py: float = 0.0, yA0: float = -1.0,
-              xB0: float = -4.0) -> tuple:
+def parameter(
+    mA: float = 6.0,
+    mB: float = 2.0,
+    g: float = 9.8,
+    px: float = 0.0,
+    py: float = 0.0,
+    yA0: float = -1.0,
+    xB0: float = -4.0,
+) -> tuple:
     """
     Membuat parameter
     """
@@ -31,22 +36,21 @@ def step_frame(a: float, px: float = 0.0, xB0: float = -4.0) -> tuple:
     return x_stop, max_s, dt, t_stop, frames
 
 
-def setup_plot(axis, px: float = 0.0, py: float = 0.0,
-               R: float = 0.2):
+def setup_plot(axis, px: float = 0.0, py: float = 0.0, R: float = 0.2):
     """
     Setup untuk plot
     """
-    theta = np.linspace(0, 2*np.pi, 200)
-    blockB, = axis.plot([], [], lw=4, color='blue')
-    blockA, = axis.plot([], [], lw=4, color='red')
+    theta = np.linspace(0, 2 * np.pi, 200)
+    (blockB,) = axis.plot([], [], lw=4, color="blue")
+    (blockA,) = axis.plot([], [], lw=4, color="red")
 
-    rope_h, = axis.plot([], [], color='saddlebrown', lw=3)
-    rope_v, = axis.plot([], [], color='saddlebrown', lw=3)
+    (rope_h,) = axis.plot([], [], color="saddlebrown", lw=3)
+    (rope_v,) = axis.plot([], [], color="saddlebrown", lw=3)
 
     labelB = axis.text(0, 0, "", fontsize=14, color="blue", weight="bold")
-    labelA = axis.text(0, 0, "", fontsize=14, color="red",  weight="bold")
+    labelA = axis.text(0, 0, "", fontsize=14, color="red", weight="bold")
 
-    axis.plot(px + R*np.cos(theta), py + R*np.sin(theta), color='black', lw=3)
+    axis.plot(px + R * np.cos(theta), py + R * np.sin(theta), color="black", lw=3)
     time_text = axis.text(0.02, 0.05, "", transform=axis.transAxes)
     return blockA, blockB, rope_h, rope_v, labelA, labelB, time_text
 
@@ -60,10 +64,23 @@ def setup_axis(axis):
     return axis
 
 
-def update(i, dt, s, xB0, yA0, px,
-           blockA, blockB, rope_h,
-           rope_v, labelB, labelA, mA,
-           mB, time_text):
+def update(
+    i,
+    dt,
+    s,
+    xB0,
+    yA0,
+    px,
+    blockA,
+    blockB,
+    rope_h,
+    rope_v,
+    labelB,
+    labelA,
+    mA,
+    mB,
+    time_text,
+):
     """
     Pembuatan frame to frame
     """
@@ -79,17 +96,17 @@ def update(i, dt, s, xB0, yA0, px,
 
     size = 0.25
     blockB.set_data(
-        [xB-size, xB+size, xB+size, xB-size, xB-size],
-        [0-size,  0-size,  0+size,  0+size,  0-size]
+        [xB - size, xB + size, xB + size, xB - size, xB - size],
+        [0 - size, 0 - size, 0 + size, 0 + size, 0 - size],
     )
 
     blockA.set_data(
         [-size, +size, +size, -size, -size],
-        [yA-size, yA-size, yA+size, yA+size, yA-size]
+        [yA - size, yA - size, yA + size, yA + size, yA - size],
     )
 
-    rope_h.set_data([xB+size, px], [0, 0])
-    rope_v.set_data([px, 0], [0, yA+size])
+    rope_h.set_data([xB + size, px], [0, 0])
+    rope_v.set_data([px, 0], [0, yA + size])
 
     labelA.set_position((0.4, yA))
     labelA.set_text(f"m = {mA} kg")
@@ -106,13 +123,12 @@ if __name__ == "__main__":
     yA0: float = -1.0
     xB0: float = -4.0
     fig, axis = plt.subplots()
-    axis.set_aspect('equal')
-    axis.axis('off')
+    axis.set_aspect("equal")
+    axis.axis("off")
     a, L, s, px, py = parameter()
     axis = setup_axis(axis)
     x_stop, max_s, dt, t_stop, frames = step_frame(a, px, xB0)
-    blockA, blockB, rope_v, rope_h, labelA, labelB, time_text = setup_plot(axis
-                                                                           )
+    blockA, blockB, rope_v, rope_h, labelA, labelB, time_text = setup_plot(axis)
 
     def init():
         """
@@ -131,14 +147,25 @@ if __name__ == "__main__":
         fig=fig,
         func=update,
         fargs=(
-            dt, s, xB0, yA0, px,
-            blockA, blockB, rope_h,
-            rope_v, labelB, labelA, mA,
-            mB, time_text),
+            dt,
+            s,
+            xB0,
+            yA0,
+            px,
+            blockA,
+            blockB,
+            rope_h,
+            rope_v,
+            labelB,
+            labelA,
+            mA,
+            mB,
+            time_text,
+        ),
         init_func=init,
         frames=frames,
         blit=False,
-        repeat=False
+        repeat=False,
     )
 
     plt.show()

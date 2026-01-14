@@ -14,11 +14,26 @@ ax.set_facecolor("black")
 N_FIREWORKS = 3
 
 main_colors = [
-    "#ff0000", "#ff7300","#ffe600", "#33ff00", "#00eaff", "#0095ff",  "#ae00ff",
-    "#ff00d4"   ]
+    "#ff0000",
+    "#ff7300",
+    "#ffe600",
+    "#33ff00",
+    "#00eaff",
+    "#0095ff",
+    "#ae00ff",
+    "#ff00d4",
+]
 
-tail_colors = ["#ff0000", "#ff7300","#ffe600", "#33ff00", "#00eaff", "#0095ff",  "#ae00ff",
-    "#ff00d4"   ]
+tail_colors = [
+    "#ff0000",
+    "#ff7300",
+    "#ffe600",
+    "#33ff00",
+    "#00eaff",
+    "#0095ff",
+    "#ae00ff",
+    "#ff00d4",
+]
 
 fireworks = []
 start_times = [10, 45, 90]
@@ -26,18 +41,15 @@ start_times = [10, 45, 90]
 
 for i in range(N_FIREWORKS):
 
-    center = np.array([
-        np.random.uniform(-1.0, 1.0),
-        np.random.uniform(1.0, 2.4)
-    ])
+    center = np.array([np.random.uniform(-1.0, 1.0), np.random.uniform(1.0, 2.4)])
 
     n_main = np.random.randint(35, 55)
     n_tails = np.random.randint(12, 18)
 
-    ang_main = np.linspace(0, 2*np.pi, n_main)
+    ang_main = np.linspace(0, 2 * np.pi, n_main)
     np.random.shuffle(ang_main)
 
-    ang_tail = np.linspace(-np.pi/2 - 0.6, -np.pi/2 + 0.6, n_tails)
+    ang_tail = np.linspace(-np.pi / 2 - 0.6, -np.pi / 2 + 0.6, n_tails)
 
     speed_main = np.random.uniform(0.01, 0.03, n_main)
     speed_tail = np.random.uniform(0.015, 0.03, n_tails)
@@ -47,26 +59,28 @@ for i in range(N_FIREWORKS):
 
     L_main = []
     for _ in range(n_main):
-        line, = ax.plot([], [], lw=2.3, alpha=1)
+        (line,) = ax.plot([], [], lw=2.3, alpha=1)
         L_main.append(line)
 
     L_tail = []
     for _ in range(n_tails):
-        line, = ax.plot([], [], lw=1.8, alpha=1)
+        (line,) = ax.plot([], [], lw=1.8, alpha=1)
         L_tail.append(line)
 
-    fireworks.append({
-        "center": center,
-        "ang_main": ang_main,
-        "ang_tail": ang_tail,
-        "speed_main": speed_main,
-        "speed_tail": speed_tail,
-        "color_main": color_main,
-        "color_tail": color_tail,
-        "L_main": L_main,
-        "L_tail": L_tail,
-        "start": start_times[i]
-    })
+    fireworks.append(
+        {
+            "center": center,
+            "ang_main": ang_main,
+            "ang_tail": ang_tail,
+            "speed_main": speed_main,
+            "speed_tail": speed_tail,
+            "color_main": color_main,
+            "color_tail": color_tail,
+            "L_main": L_main,
+            "L_tail": L_tail,
+            "start": start_times[i],
+        }
+    )
 
 
 def update(frame):

@@ -16,7 +16,7 @@ Omega_p = (m * g * r * np.sin(theta0)) / L
 
 
 def generate_top_geometry():
-    theta_circle = np.linspace(0, 2*np.pi, 30)
+    theta_circle = np.linspace(0, 2 * np.pi, 30)
     x_circle = r * np.cos(theta_circle)
     y_circle = r * np.sin(theta_circle)
     z_circle = np.zeros_like(x_circle) + (r)
@@ -44,7 +44,7 @@ def rotate_coordinates(x, y, z, angle_spin, angle_tilt, angle_precess):
 
 
 fig = plt.figure(figsize=(6, 6))
-ax = fig.add_subplot(111, projection='3d')
+ax = fig.add_subplot(111, projection="3d")
 
 ax.set_xlim(-0.1, 0.1)
 ax.set_ylim(-0.1, 0.1)
@@ -55,9 +55,9 @@ ax.set_ylabel("Y")
 ax.set_zlabel("Z")
 
 
-line_body, = ax.plot([], [], [], 'b-', lw=2)
-line_disk, = ax.plot([], [], [], 'r-', lw=3)
-point_tip, = ax.plot([], [], [], 'ko')
+(line_body,) = ax.plot([], [], [], "b-", lw=2)
+(line_disk,) = ax.plot([], [], [], "r-", lw=3)
+(point_tip,) = ax.plot([], [], [], "ko")
 
 
 xc_raw, yc_raw, zc_raw, xl_raw, yl_raw, zl_raw = generate_top_geometry()
@@ -73,11 +73,17 @@ def update(frame):
     current_spin = omega * t
     current_precess = Omega_p * t
 
-    xc, yc, zc = rotate_coordinates(xc_raw, yc_raw, zc_raw,
-                                    current_spin, theta0, current_precess)
-    xl, yl, zl = rotate_coordinates(np.array(xl_raw), np.array(yl_raw),
-                                    np.array(zl_raw), current_spin, theta0,
-                                    current_precess)
+    xc, yc, zc = rotate_coordinates(
+        xc_raw, yc_raw, zc_raw, current_spin, theta0, current_precess
+    )
+    xl, yl, zl = rotate_coordinates(
+        np.array(xl_raw),
+        np.array(yl_raw),
+        np.array(zl_raw),
+        current_spin,
+        theta0,
+        current_precess,
+    )
 
     line_disk.set_data(xc, yc)
     line_disk.set_3d_properties(zc)

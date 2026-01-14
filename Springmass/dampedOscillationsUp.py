@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def parameter(A: float = 1, w: float = 6,
-              b1: float = 0.15, b2: float = 0.40) -> float:
+def parameter(A: float = 1, w: float = 6, b1: float = 0.15, b2: float = 0.40) -> float:
     """
     Fuction fot make parameter
     """
@@ -32,12 +31,12 @@ def setup_plot(axis, b1, b2):
     fuction for setup plot
     """
     scat1 = axis.scatter([], [], s=15, label=f"b={b1}")
-    line2, = axis.plot([], [], c="r", label=f"b={b2}")
+    (line2,) = axis.plot([], [], c="r", label=f"b={b2}")
     return scat1, line2
 
 
 def update(frame, t, x1, x2, scat1, line2):
-    """ Fuction make frame to frame """
+    """Fuction make frame to frame"""
     data1 = np.column_stack((t[:frame], x1[:frame]))
     scat1.set_offsets(data1)
     line2.set_xdata(t[:frame])
@@ -53,7 +52,7 @@ if __name__ == "__main__":
     axis.legend()
 
     def init():
-        """ initial parameter """
+        """initial parameter"""
         scat1.set_offsets(np.empty((0, 2)))
         line2.set_xdata([])
         line2.set_ydata([])
@@ -66,7 +65,7 @@ if __name__ == "__main__":
         init_func=init,
         frames=len(t),
         interval=30,
-        blit=True
+        blit=True,
     )
 
     plt.show()

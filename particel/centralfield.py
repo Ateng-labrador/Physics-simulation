@@ -7,14 +7,15 @@ import matplotlib.animation as animation
 
 # SETUP FIGURE
 fig, ax = plt.subplots(figsize=(7, 7))
-fig.patch.set_facecolor('#F8F1FF')
-ax.set_facecolor('#F8F1FF')
+fig.patch.set_facecolor("#F8F1FF")
+ax.set_facecolor("#F8F1FF")
 ax.set_xlim(-8, 8)
 ax.set_ylim(-8, 8)
 ax.set_aspect("equal")
 ax.axis("off")
-ax.set_title("Gerak Partikel dalam Medan Gaya Sentral",
-             color='#7A77B9', fontsize=15, pad=15)
+ax.set_title(
+    "Gerak Partikel dalam Medan Gaya Sentral", color="#7A77B9", fontsize=15, pad=15
+)
 
 # Parameter
 k = 5.0
@@ -26,13 +27,13 @@ vx, vy = 0.0, 1.4
 
 
 # warna
-particle_color = '#48b05b'
-trail_color = '#e028d4'
-center_color = '#2712e6'
+particle_color = "#48b05b"
+trail_color = "#e028d4"
+center_color = "#2712e6"
 
 # particel dan jejak
 particle = ax.scatter([], [], s=60, color=particle_color)
-track, = ax.plot([], [], color=trail_color, linewidth=2)
+(track,) = ax.plot([], [], color=trail_color, linewidth=2)
 
 # pusat gaya
 ax.scatter(0, 0, s=150, color=center_color)
@@ -46,8 +47,11 @@ def central_force(x, y):
 
     return Fx, Fy
 
+
 trail_x = []
 trail_y = []
+
+
 def update(frame):
 
     global x, y, vx, vy
@@ -69,9 +73,7 @@ def update(frame):
 
 
 # ANIMASI
-ani = animation.FuncAnimation(
-    fig, update, frames=1000, interval=20
-)
+ani = animation.FuncAnimation(fig, update, frames=1000, interval=20)
 
 
 plt.show()

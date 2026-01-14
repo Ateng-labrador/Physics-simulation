@@ -3,9 +3,13 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def parameter(A: float = 1.0, w: float = 2*np.pi,
-              phi: float = 0, t_max: float = 6,
-              dt: float = 0.02) -> tuple:
+def parameter(
+    A: float = 1.0,
+    w: float = 2 * np.pi,
+    phi: float = 0,
+    t_max: float = 6,
+    dt: float = 0.02,
+) -> tuple:
     """
     Fungsi untuk membuat parameter
     """
@@ -23,9 +27,9 @@ def setup_axis(axis):
     axis.set_xlim(-1.5, 1.5)
     axis.set_ylim(-0.5, 0.5)
     axis.set_zlim(-0.5, 0.5)
-    axis.axis('off')
-    axis.set_facecolor('black')
-    axis.set_aspect('equal')
+    axis.axis("off")
+    axis.set_facecolor("black")
+    axis.set_aspect("equal")
     return axis
 
 
@@ -33,8 +37,8 @@ def setup_plot(axis):
     """
     Fungsi untuk membuat plot
     """
-    ball, = axis.plot([], [], [], 'o', markersize=12, color='red')
-    trail, = axis.plot([], [], [], lw=1, color='blue')
+    (ball,) = axis.plot([], [], [], "o", markersize=12, color="red")
+    (trail,) = axis.plot([], [], [], lw=1, color="blue")
     return ball, trail
 
 
@@ -51,8 +55,8 @@ def update(i, ball, trail, x, y, z):
 
 if __name__ == "__main__":
     fig = plt.figure(figsize=(8, 6))
-    axis = fig.add_subplot(111, projection='3d')
-    fig.patch.set_facecolor('black')
+    axis = fig.add_subplot(111, projection="3d")
+    fig.patch.set_facecolor("black")
     axis = setup_axis(axis)
     x, y, z, t = parameter()
     ball, trail = setup_plot(axis)
@@ -76,7 +80,7 @@ if __name__ == "__main__":
         init_func=init,
         frames=len(t),
         interval=20,
-        blit=True
+        blit=True,
     )
 
     plt.show()

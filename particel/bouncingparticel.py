@@ -31,8 +31,8 @@ for t in times:
     x2 += v2 * dt
 
     if not collided and abs(x1 - x2) <= 0.5:
-        v1_new = ((m1 - m2)/(m1 + m2))*v1 + ((2*m2)/(m1 + m2))*v2
-        v2_new = ((2*m1)/(m1 + m2))*v1 + ((m2 - m1)/(m1 + m2))*v2
+        v1_new = ((m1 - m2) / (m1 + m2)) * v1 + ((2 * m2) / (m1 + m2)) * v2
+        v2_new = ((2 * m1) / (m1 + m2)) * v1 + ((m2 - m1) / (m1 + m2)) * v2
         v1, v2 = v1_new, v2_new
         collided = True
 
@@ -45,8 +45,8 @@ ax.set_xlim(-8, 8)
 ax.set_ylim(-1, 1)
 ax.set_title("Tumbukan Dua Benda (Elastis)")
 
-obj1, = ax.plot([], [], 'bo', markersize=22)
-obj2, = ax.plot([], [], 'ro', markersize=22)
+(obj1,) = ax.plot([], [], "bo", markersize=22)
+(obj2,) = ax.plot([], [], "ro", markersize=22)
 
 
 def update(frame):
@@ -55,9 +55,6 @@ def update(frame):
     return obj1, obj2
 
 
-anim = FuncAnimation(fig,
-                     update,
-                     frames=len(times),
-                     interval=20)
+anim = FuncAnimation(fig, update, frames=len(times), interval=20)
 
 plt.show()

@@ -10,12 +10,7 @@ def random_hex() -> str:
     """
     Fuction for make random color
     """
-    hex_value = "".join(
-        np.random.choice(
-            list(string.hexdigits),
-            6
-        )
-    )
+    hex_value = "".join(np.random.choice(list(string.hexdigits), 6))
     return f"#{hex_value}"
 
 
@@ -32,17 +27,21 @@ def create_plot(axis, planets=planets) -> tuple:
     """
     Make plot sun, planet, orbit
     """
-    t = np.linspace(0, 2*np.pi, 500)
+    t = np.linspace(0, 2 * np.pi, 500)
     planet_dots = []
     orbit_paths = []
     sun = axis.scatter(0, 0, c="yellow", s=200, label="sun")
     for p in planets:
         # equation of elips here a*cos b*sin
-        orbit, = axis.plot(
-                        p["a"] * np.cos(t), p["b"] * np.sin(t),
-                        linestyle="--", linewidth=1,
-                        color=p["color"], alpha=0.5)
-        dot = axis.scatter([], [], marker='o', s=36, color=p["color"])
+        (orbit,) = axis.plot(
+            p["a"] * np.cos(t),
+            p["b"] * np.sin(t),
+            linestyle="--",
+            linewidth=1,
+            color=p["color"],
+            alpha=0.5,
+        )
+        dot = axis.scatter([], [], marker="o", s=36, color=p["color"])
         orbit_paths.append(orbit)
         planet_dots.append(dot)
     return sun, planet_dots, orbit_paths
@@ -56,7 +55,7 @@ def create_axis(axis) -> None:
     axis.set_ylim(-13, 13)
     axis.set_facecolor("black")
     axis.set_aspect("equal")
-    axis.axis('off')
+    axis.axis("off")
     return axis
 
 
@@ -85,7 +84,7 @@ def update(frame, planets, planet_dots) -> tuple:
 
 if __name__ == "__main__":
     fig, axis = plt.subplots()
-    fig.patch.set_facecolor('black')
+    fig.patch.set_facecolor("black")
     axis = create_axis(axis)
 
     for p in planets:
@@ -105,7 +104,7 @@ if __name__ == "__main__":
         init_func=init,
         frames=1000,
         interval=16,
-        blit=True
+        blit=True,
     )
 
     plt.show()

@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def calculation_math(r1: float, r2: float, r3: float,
-                     w1: float, w2: float, w3: float):
+def calculation_math(r1: float, r2: float, r3: float, w1: float, w2: float, w3: float):
     """
     function Calculation math equation
 
@@ -15,12 +14,12 @@ def calculation_math(r1: float, r2: float, r3: float,
     x(real)
     y(imag)
     """
-    theta = np.linspace(0, 2*np.pi, 1000)
+    theta = np.linspace(0, 2 * np.pi, 1000)
     z = (
-        r1*np.exp(1j * w1 * theta) +
-        r2 * np.exp(1j * w2 * theta) +
-        r3 * np.exp(1j * w3 * theta)
-        )
+        r1 * np.exp(1j * w1 * theta)
+        + r2 * np.exp(1j * w2 * theta)
+        + r3 * np.exp(1j * w3 * theta)
+    )
     x = np.real(z)
     y = np.imag(z)
     return x, y
@@ -32,7 +31,7 @@ def setup_axis(axis) -> tuple:
     """
     axis.set_xlim(-10, 10)
     axis.set_ylim(-10, 10)
-    axis.axis('off')
+    axis.axis("off")
     axis.set_aspect("equal")
     return axis
 
@@ -41,7 +40,7 @@ def create_plot(axis) -> tuple:
     """
     Function for make the figure line
     """
-    line, = axis.plot([], [], lw=1.5, color="white")
+    (line,) = axis.plot([], [], lw=1.5, color="white")
     return line
 
 
@@ -55,11 +54,10 @@ def update(frame, x, y, line) -> tuple:
 
 if __name__ == "__main__":
     fig, axis = plt.subplots()
-    x, y = calculation_math(4, 4, 1.3,
-                            44, -17, -54)
-    fig.patch.set_facecolor('pink')
+    x, y = calculation_math(4, 4, 1.3, 44, -17, -54)
+    fig.patch.set_facecolor("pink")
     axis = setup_axis(axis)
-    plt.axis('off')
+    plt.axis("off")
     line = create_plot(axis)
 
     def init() -> tuple:

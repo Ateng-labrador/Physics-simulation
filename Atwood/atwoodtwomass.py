@@ -22,21 +22,21 @@ frames = int(t_stop / dt)
 fig, axis = plt.subplots(figsize=(7, 6))
 axis.set_xlim(-5, 1.5)
 axis.set_ylim(-5, 2)
-axis.set_aspect('equal')
-axis.axis('off')
+axis.set_aspect("equal")
+axis.axis("off")
 
-blockB, = axis.plot([], [], lw=4, color='blue')
-blockA, = axis.plot([], [], lw=4, color='red')
+(blockB,) = axis.plot([], [], lw=4, color="blue")
+(blockA,) = axis.plot([], [], lw=4, color="red")
 
-rope_h, = axis.plot([], [], color='saddlebrown', lw=3)
-rope_v, = axis.plot([], [], color='saddlebrown', lw=3)
+(rope_h,) = axis.plot([], [], color="saddlebrown", lw=3)
+(rope_v,) = axis.plot([], [], color="saddlebrown", lw=3)
 
 labelB = axis.text(0, 0, "", fontsize=14, color="blue", weight="bold")
-labelA = axis.text(0, 0, "", fontsize=14, color="red",  weight="bold")
+labelA = axis.text(0, 0, "", fontsize=14, color="red", weight="bold")
 
-theta = np.linspace(0, 2*np.pi, 200)
+theta = np.linspace(0, 2 * np.pi, 200)
 R = 0.2
-axis.plot(px + R*np.cos(theta), py + R*np.sin(theta), color='black', lw=3)
+axis.plot(px + R * np.cos(theta), py + R * np.sin(theta), color="black", lw=3)
 time_text = axis.text(0.02, 0.05, "", transform=axis.transAxes)
 
 
@@ -51,15 +51,15 @@ def update(f):
 
     size = 0.25
     blockB.set_data(
-        [xB-size, xB+size, xB+size, xB-size, xB-size],
-        [0-size,  0-size,  0+size,  0+size,  0-size]
+        [xB - size, xB + size, xB + size, xB - size, xB - size],
+        [0 - size, 0 - size, 0 + size, 0 + size, 0 - size],
     )
     blockA.set_data(
         [-size, +size, +size, -size, -size],
-        [yA-size, yA-size, yA+size, yA+size, yA-size]
+        [yA - size, yA - size, yA + size, yA + size, yA - size],
     )
-    rope_h.set_data([xB+size, px], [0, 0])
-    rope_v.set_data([px, 0], [0, yA+size])
+    rope_h.set_data([xB + size, px], [0, 0])
+    rope_v.set_data([px, 0], [0, yA + size])
 
     labelB.set_position((xB, 0.4))
     labelB.set_text(f"m = {mB} kg")
@@ -72,9 +72,5 @@ def update(f):
     return blockB, blockA, rope_h, rope_v, labelB, labelA, time_text
 
 
-ani = FuncAnimation(fig,
-                    update,
-                    frames=frames,
-                    interval=40,
-                    repeat=False)
+ani = FuncAnimation(fig, update, frames=frames, interval=40, repeat=False)
 plt.show()

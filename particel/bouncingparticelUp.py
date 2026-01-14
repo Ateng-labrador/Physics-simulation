@@ -4,10 +4,16 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def parameter(m1: float = 2.0, m2: float = 1.0,
-              v1: float = 1.4, v2: float = -1.2,
-              x1: float = -4.0, x2: float = 4.0,
-              dt: float = 0.02, t_max: float = 10):
+def parameter(
+    m1: float = 2.0,
+    m2: float = 1.0,
+    v1: float = 1.4,
+    v2: float = -1.2,
+    x1: float = -4.0,
+    x2: float = 4.0,
+    dt: float = 0.02,
+    t_max: float = 10,
+):
     """
     Fungsi untuk membuat parameter
     """
@@ -21,8 +27,8 @@ def parameter(m1: float = 2.0, m2: float = 1.0,
 
         if not collided and abs(x1 - x2) <= 0.5:
             # persamaan tumbukan elastis
-            v1_new = ((m1 - m2)/(m1 + m2))*v1 + ((2*m2)/(m1 + m2))*v2
-            v2_new = ((2*m1)/(m1 + m2))*v1 + ((m2 - m1)/(m1 + m2))*v2
+            v1_new = ((m1 - m2) / (m1 + m2)) * v1 + ((2 * m2) / (m1 + m2)) * v2
+            v2_new = ((2 * m1) / (m1 + m2)) * v1 + ((m2 - m1) / (m1 + m2)) * v2
             v1, v2 = v1_new, v2_new
             collided = True
 
@@ -47,8 +53,8 @@ def setup_plot(axis):
     """
     Fungsi untuk membuat axis
     """
-    obj1, = axis.plot([], [], 'bo', markersize=22)
-    obj2, = axis.plot([], [], 'ro', markersize=22)
+    (obj1,) = axis.plot([], [], "bo", markersize=22)
+    (obj2,) = axis.plot([], [], "ro", markersize=22)
     return obj1, obj2
 
 

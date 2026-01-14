@@ -37,9 +37,9 @@ def create_plot(axis):
     """
     Fuction for make the plot
     """
-    animated_mass, = axis[0].plot([], [], '-o', markersize=20, color='red')
-    animated_spring, = axis[0].plot([], [], color='blue')
-    animated_func, = axis[1].plot([], [], color='blue')
+    (animated_mass,) = axis[0].plot([], [], "-o", markersize=20, color="red")
+    (animated_spring,) = axis[0].plot([], [], color="blue")
+    (animated_func,) = axis[1].plot([], [], color="blue")
     return animated_mass, animated_spring, animated_func
 
 
@@ -56,7 +56,7 @@ def update(frame, t, x, animated_mass, animated_spring, animated_func):
     """
     animated_spring.set_data([0, 0], [2, x[frame]])
     animated_mass.set_data([0], [x[frame]])
-    animated_spring.set_linewidth(int(abs(x[frame]-2)*2))
+    animated_spring.set_linewidth(int(abs(x[frame] - 2) * 2))
     animated_func.set_data(t[:frame], x[:frame])
     return animated_mass, animated_spring, animated_func
 
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     animated_mass, animated_spring, animated_func = create_plot(axis)
 
     def init():
-        """ Initial parameter """
+        """Initial parameter"""
         animated_mass.set_data([], [])
         animated_spring.set_data([], [])
         animated_func.set_data([], [])
@@ -81,7 +81,7 @@ if __name__ == "__main__":
         init_func=init,
         frames=len(t),
         interval=25,
-        blit=False
+        blit=False,
     )
 
     plt.show()

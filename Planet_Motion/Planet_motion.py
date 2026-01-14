@@ -5,7 +5,7 @@ import numpy as np
 from matplotlib.animation import FuncAnimation
 
 # intial parameter
-t = np.linspace(0, 2*np.pi, 200)
+t = np.linspace(0, 2 * np.pi, 200)
 r = 3
 x = r * np.cos(t)
 y = r * np.sin(t)
@@ -17,7 +17,7 @@ def create_plot(axis) -> tuple:
     """
     sun = axis.scatter(0, 0, c="yellow", s=200, label="sun")
     planet = axis.scatter(x[0], y[0], c="blue", s=40, label="Planet")
-    orbit = axis.plot(x[0], y[0], '--', color="white", linewidth=1)[0]
+    orbit = axis.plot(x[0], y[0], "--", color="white", linewidth=1)[0]
     return sun, planet, orbit
 
 
@@ -43,17 +43,17 @@ def animation(frame, x, y, planet, orbit) -> tuple:
 
 if __name__ == "__main__":
     fig, axis = plt.subplots()
-    fig.patch.set_facecolor('black')
+    fig.patch.set_facecolor("black")
     axis = setup_axis(axis)
-    plt.axis('off')
+    plt.axis("off")
     sun, planet, orbit = create_plot(axis)
 
     # for the label
     leg = axis.legend()
-    leg.get_frame().set_facecolor('white')
-    leg.get_frame().set_edgecolor('white')
+    leg.get_frame().set_facecolor("white")
+    leg.get_frame().set_edgecolor("white")
     for txt in leg.get_texts():
-        txt.set_color('black')
+        txt.set_color("black")
 
     def init() -> tuple:
         """
@@ -71,7 +71,7 @@ if __name__ == "__main__":
         init_func=init,
         frames=len(t),
         interval=25,
-        blit=True
+        blit=True,
     )
 
     plt.show()

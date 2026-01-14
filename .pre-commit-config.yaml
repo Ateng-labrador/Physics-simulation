@@ -20,7 +20,7 @@ repos:
 
   - repo: https://github.com/PyCQA/flake8
     rev: 7.1.0
-    hokks:
+    hooks:
       - id: flake8
         args:
           - --exclude=Basic

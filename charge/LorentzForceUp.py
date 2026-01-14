@@ -12,10 +12,11 @@ n = 400
 def setup_axis(axis):
     axis.set_xlim([-6, 6])
     axis.set_ylim([-6, 6])
-    axis.aspect('equal')
-    axis.tick_params(colors='white')
+    axis.aspect("equal")
+    axis.tick_params(colors="white")
     axis.grid(True)
     return axis
+
 
 if __name__ == "__main__":
     fig, axis = plt.subplots(figsize=(10, 10))

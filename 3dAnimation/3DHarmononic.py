@@ -19,7 +19,7 @@ z = 0.3 * np.sin(2 * omega * t)
 
 # Setup figure
 fig = plt.figure(figsize=(8, 6))
-ax = fig.add_subplot(111, projection='3d')
+ax = fig.add_subplot(111, projection="3d")
 ax.set_title("Simulasi Gerak Harmonik Sederhana")
 ax.set_xlim(-1.5, 1.5)
 ax.set_ylim(-0.5, 0.5)
@@ -29,9 +29,9 @@ ax.set_ylabel("Y")
 ax.set_zlabel("Z")
 
 # Objek bola GHS
-ball, = ax.plot([], [], [], 'o', markersize=12, color='red')
+(ball,) = ax.plot([], [], [], "o", markersize=12, color="red")
 
-trail, = ax.plot([], [], [], lw=1, color='blue')
+(trail,) = ax.plot([], [], [], lw=1, color="blue")
 
 
 # Fungsi update animasi
@@ -43,11 +43,7 @@ def update(frame):
     return ball, trail
 
 
-anim = FuncAnimation(fig,
-                     update,
-                     frames=len(t),
-                     interval=20,
-                     blit=True)
+anim = FuncAnimation(fig, update, frames=len(t), interval=20, blit=True)
 
 gif_writer = PillowWriter(fps=40)
 
