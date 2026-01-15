@@ -20,4 +20,8 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 message: true
+                branch: false
+                author-name: false
+                author-email: false
+                job-summary: false
                 pr-comments: ${{ github.event_name == 'pull_request' }}
